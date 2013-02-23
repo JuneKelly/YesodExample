@@ -82,7 +82,7 @@ getNewUserR = do
   
 postNewUserR :: Handler RepHtml
 postNewUserR = do
-  ((result, _), _) <- runFormPost newUserForm
+  ((result, nuForm), _) <- runFormPost newUserForm
   case result of
     FormSuccess nu -> do
       newb <- setPassword (nPassword nu) $
@@ -101,7 +101,8 @@ postNewUserR = do
       if (nameTaken)
         then do
           setMessage $ msgAlert "That username is not available"
-          redirect NewUserR 
+          defaultLayout $ do -- redisplay the page, keeping form data
+            $(widgetFile "newuser")
         else do
           _ <- runDB $ insert newb
           setMessage $ msgSuccess $ "Created User " <> nFullName nu
