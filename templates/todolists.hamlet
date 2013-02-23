@@ -1,0 +1,17 @@
+<div class="todolist-index">
+  <h1>Your Todo Lists
+  <div class="">
+    $if null lists
+      <p>There are no lists
+    $else
+      <p>
+        <ul>
+          $forall Entity key todoList <- lists
+            <li>
+              <h2>
+                <a href=@{TodoListR key}>#{todoListTitle todoList}</a>
+  <div class="new-todolist-form">
+    <h3>New List:
+    <form method=post action=@{NewTodoListR}>
+      ^{tForm}
+      <input type=submit value="Create Todo-List" class="btn btn-primary">

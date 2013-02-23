@@ -1,0 +1,15 @@
+<div class="todolist">
+  <h2>#{todoListTitle todoList}
+
+  <div class="tasklist span12">
+    $forall Entity tId task <- tasks
+      ^{wTask tId task}
+        
+  <br />
+  <div class="new-task-form">
+    <form method=post action=@{NewTaskR listId}>
+      ^{taskForm}
+      <input type=submit value="New Task" class="btn btn-primary">
+  <div class="actions">
+    <form method=post action=@{DelTodoListR listId}>
+      <button class="btn btn-danger">Delete List 

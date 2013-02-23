@@ -1,0 +1,53 @@
+#main {
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#main p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#main h1 {
+    font-size: 3em;
+    margin-bottom: 42px;
+}
+
+#main h2 {
+    font-size: 2em;
+}
+
+#main h3 {
+    font-size: 1.5em;
+}
+
+#main label {
+    font-size: 16px;
+}
+
+.user-ident {
+    padding-top: 9px;
+}
+
+#main-content {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+footer {
+    padding-top: 48px;
+}
+
+.nicEdit-panelContain {
+    width: 600px;
+}
+
+#login {
+    padding-left: 40px;
+}
+
+
+#login td {
+   padding: 4px;
+}

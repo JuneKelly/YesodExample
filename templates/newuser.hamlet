@@ -1,0 +1,5 @@
+<div class="newuser">
+  <h1>Sign Up
+  <form method=post>
+    ^{nuForm}
+    <input type=submit value="Submit">

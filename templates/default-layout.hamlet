@@ -1,0 +1,24 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href=@{HomeR}>Yesod Example
+    <ul class="nav">
+      <li class="">
+        <a href=@{HomeR}>Home
+      <li class="">
+        $maybe Entity userId _ <- muser
+          <li class="">
+            <a href=@{IndexTodoListR}>My Lists
+          <li class="">
+            <a href=@{ShowUserR userId}>My Profile
+          <li class="">
+            <a href=@{AuthR LogoutR}>Logout
+        $nothing
+          <li>
+            <a href=@{NewUserR}>Sign Up
+          <li>
+            <a href=@{AuthR LoginR}>Login
+
+<div class="container-fluid" id="main-content">
+  $maybe msg <- mmsg
+      <div #message>#{msg}
+  ^{widget}

@@ -1,0 +1,20 @@
+User
+    username Text
+    password Text
+    salt Text
+    fullName Text Asc
+    description Text Maybe
+    admin Bool default=false
+    email Text Maybe toFormField=maybeEmailField Update Eq
+    UniqueUser username
+
+TodoList
+    title Text
+    owner UserId
+
+Task
+    title Text
+    done Bool default=false
+    todoList TodoListId
+
+ -- By default this file is used in Model.hs (which is imported by Foundation.hs)

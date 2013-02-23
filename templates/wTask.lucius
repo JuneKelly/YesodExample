@@ -1,0 +1,23 @@
+.task-container {
+    padding-left: 18px;
+    margin-bottom: 18px;
+    clear: both;
+}
+
+.task {
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.task header {
+    font-size: 1.2em;
+}
+
+form {
+    padding-bottom: 8px;
+}
+
+.task-done {
+    color: green;
+}

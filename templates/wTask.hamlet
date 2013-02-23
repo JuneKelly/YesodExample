@@ -1,0 +1,12 @@
+<div class="task-container span4">
+  <div class="task">
+    $if taskDone t
+      <header class="task-done">- #{taskTitle t}
+      <form method=post action=@{DeleteTaskR tId}>
+        <button class="btn btn-danger btn-small pull-right">
+          Delete
+    $else
+      <header>- #{taskTitle t}
+      <form method=post action=@{DoneTaskR tId}>
+        <button class="btn btn-success btn-small pull-right">
+          Done

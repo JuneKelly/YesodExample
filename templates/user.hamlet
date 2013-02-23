@@ -1,0 +1,24 @@
+<div class="user-details">
+  <h1>#{userFullName user}
+  <p>
+    $maybe email <- (userEmail user)
+      <img id="gravatar" src=#{getGravatar email}>
+    $nothing
+      <small>no image
+  <p>
+    <strong>Username:</strong> #{userUsername user}
+  <p>
+    $maybe desc <- (userDescription user)
+      #{desc}
+    $nothing
+      <small>no description
+  <p>
+    $maybe email <- (userEmail user)
+      #{email}
+    $nothing
+      <small>no email specified
+  <p>
+    <strong>Admin:</strong> #{userAdmin user}
+  <p>
+    $maybe uid <- muser
+      <a class="btn btn-info" href=@{EditUserR}>Edit Profile

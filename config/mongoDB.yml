@@ -1,0 +1,24 @@
+Default: &defaults
+  user: YesodExample
+  password: YesodExample
+  host: localhost
+  database: YesodExample
+  connections: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: YesodExample_test
+  <<: *defaults
+
+Staging:
+  database: YesodExample_staging
+  connections: 100
+  <<: *defaults
+
+Production:
+  database: YesodExample_production
+  connections: 100
+  host: localhost
+  <<: *defaults

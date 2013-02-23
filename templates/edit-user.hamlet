@@ -1,0 +1,5 @@
+<div class="edit-user">
+  <h1>Edit #{userFullName user}
+  <form method=post>
+    ^{uForm}
+    <input type=submit class="btn btn-primary" value="Save">

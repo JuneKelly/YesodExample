@@ -1,0 +1,13 @@
+*~
+.o
+*.o_p
+*.swp
+*.hi
+*.sqlite3
+*.swp
+dist
+client_session_key.aes
+cabal-dev/
+yesod-devel/
+devel-server
+static/tmp
