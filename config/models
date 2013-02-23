@@ -6,7 +6,7 @@ User
     description Text Maybe
     admin Bool default=false
     email Text Maybe toFormField=maybeEmailField Update Eq
-    UniqueUser username
+    UniqueUsername username
 
 TodoList
     title Text

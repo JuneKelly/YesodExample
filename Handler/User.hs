@@ -94,9 +94,25 @@ postNewUserR = do
                    userAdmin = False,
                    userEmail = Nothing
                  }
-      _ <- runDB $ insert newb
-      setMessage $ msgSuccess $ "Created User " <> nFullName nu
-      redirect $ AuthR LoginR
+      nameTaken <- usernameTaken $ nUsername nu
+      -- check username availability before insert
+      -- avoid internal server error when using Mongo
+      -- with a unique index on User collection
+      if (nameTaken)
+        then do
+          setMessage $ msgAlert "That username is not available"
+          redirect NewUserR 
+        else do
+          _ <- runDB $ insert newb
+          setMessage $ msgSuccess $ "Created User " <> nFullName nu
+          redirect $ AuthR LoginR
     _ -> do
       setMessage $ msgError "Something went wrong"
       redirect HomeR
+
+usernameTaken :: Text -> Handler Bool
+usernameTaken name = do
+  c <- runDB $ selectList [UserUsername ==. name] []
+  case c of
+    [] -> return False
+    _  -> return True

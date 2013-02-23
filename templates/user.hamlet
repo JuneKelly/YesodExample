@@ -21,4 +21,5 @@
     <strong>Admin:</strong> #{userAdmin user}
   <p>
     $maybe uid <- muser
-      <a class="btn btn-info" href=@{EditUserR}>Edit Profile
+      $if uid == userId
+        <a class="btn btn-info" href=@{EditUserR}>Edit Profile

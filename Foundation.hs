@@ -138,9 +138,9 @@ instance YesodAuth App where
     -- Where to send a user after logout
     logoutDest _ = HomeR
 
-    getAuthId     = getAuthIdHashDB AuthR (Just . UniqueUser)
+    getAuthId     = getAuthIdHashDB AuthR (Just . UniqueUsername)
     
-    authPlugins _ = [authHashDB (Just . UniqueUser)]
+    authPlugins _ = [authHashDB (Just . UniqueUsername)]
 
     authHttpManager = httpManager
 
