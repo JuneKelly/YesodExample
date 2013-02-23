@@ -2,4 +2,4 @@
   <h1>Sign Up
   <form method=post>
     ^{nuForm}
-    <input type=submit value="Submit">
+    <input type=submit value="Submit" class="btn btn-success">
