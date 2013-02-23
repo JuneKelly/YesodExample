@@ -5,6 +5,7 @@
 *.hi
 *.sqlite3
 *.swp
+.#*
 dist
 client_session_key.aes
 cabal-dev/
