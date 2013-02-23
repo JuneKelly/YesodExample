@@ -24,9 +24,9 @@ getShowUserR userId = do
 userForm :: User -> Form User
 userForm user =
   renderDivs $ User
-  <$> pure (userUsername user)
-  <*> pure (userPassword user)
-  <*> pure (userSalt user)
+  <$> pure (userUsername user) -- credentials are not editable, and 
+  <*> pure (userPassword user) -- are derived from the User which
+  <*> pure (userSalt user)     -- is passed to this Form
   <*> areq textField "Full Name" (Just $ userFullName user)
   <*> aopt textField "Description" (Just $ userDescription user)
   <*> pure (userAdmin user)
@@ -102,6 +102,7 @@ postNewUserR = do
         then do
           setMessage $ msgAlert "That username is not available"
           defaultLayout $ do -- redisplay the page, keeping form data
+            setTitle "Name Taken"
             $(widgetFile "newuser")
         else do
           _ <- runDB $ insert newb
