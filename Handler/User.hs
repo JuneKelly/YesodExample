@@ -82,8 +82,8 @@ getNewUserR = do
   
 postNewUserR :: Handler RepHtml
 postNewUserR = do
-  ((res, _), _) <- runFormPost newUserForm
-  case res of
+  ((result, _), _) <- runFormPost newUserForm
+  case result of
     FormSuccess nu -> do
       newb <- setPassword (nPassword nu) $
             User { userUsername = (nUsername nu), 
@@ -95,8 +95,8 @@ postNewUserR = do
                    userEmail = Nothing
                  }
       _ <- runDB $ insert newb
-      setMessage $ msgSuccess "User created"
-      redirect HomeR
+      setMessage $ msgSuccess $ "Created User " <> nFullName nu
+      redirect $ AuthR LoginR
     _ -> do
       setMessage $ msgError "Something went wrong"
       redirect HomeR
