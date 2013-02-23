@@ -113,7 +113,7 @@ postNewUserR = do
 
 usernameTaken :: Text -> Handler Bool
 usernameTaken name = do
-  c <- runDB $ selectList [UserUsername ==. name] []
-  case c of
+  results <- runDB $ selectList [UserUsername ==. name] []
+  case results of
     [] -> return False
     _  -> return True
