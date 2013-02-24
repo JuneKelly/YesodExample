@@ -1,4 +1,4 @@
-<div class="edit-user">
+<div class="edit-user span6">
   <h1>Edit #{userFullName user}
   <form method=post>
     ^{uForm}

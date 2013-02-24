@@ -1,0 +1,12 @@
+.edit-user {
+
+}
+
+.edit-user input {
+    width: 100%;
+}
+
+.edit-user textarea {
+    width: 100%;
+    height: 180px;
+}
