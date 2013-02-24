@@ -3,7 +3,7 @@ User
     password Text
     salt Text
     fullName Text Asc
-    description Text Maybe
+    description Markdown Maybe
     admin Bool default=false
     email Text Maybe toFormField=maybeEmailField Update Eq
     UniqueUsername username

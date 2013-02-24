@@ -10,6 +10,7 @@ where
   
 import Import
 import Yesod.Auth.HashDB (setPassword)
+import Yesod.Markdown
 
 -- show user
 getShowUserR :: UserId -> Handler RepHtml
@@ -28,7 +29,7 @@ userForm user =
   <*> pure (userPassword user) -- are derived from the User which
   <*> pure (userSalt user)     -- is passed to this Form
   <*> areq textField "Full Name" (Just $ userFullName user)
-  <*> aopt textField "Description" (Just $ userDescription user)
+  <*> aopt markdownField "Description" (Just $ userDescription user)
   <*> pure (userAdmin user)
   <*> aopt emailField "Email" (Just $ userEmail user) 
     

@@ -9,7 +9,7 @@
     <strong>Username:</strong> #{userUsername user}
   <p>
     $maybe desc <- (userDescription user)
-      #{desc}
+      #{markdownToHtml $ desc}
     $nothing
       <small>no description
   <p>
@@ -17,8 +17,10 @@
       #{email}
     $nothing
       <small>no email specified
-  <p>
-    <strong>Admin:</strong> #{userAdmin user}
+
+  $if userAdmin user
+    <p>
+      <strong>Admin</strong>
   <p>
     $maybe uid <- muser
       $if uid == userId
