@@ -7,8 +7,9 @@ import TestImport
 
 homeSpecs :: Specs
 homeSpecs =
-  describe "These are some example tests" $
-    it "loads the index and checks it looks right" $ do
+  describe "The Homepage" $
+    it "should be shown at site root" $ do
       get_ "/"
       statusIs 200
-      htmlAllContain "h1" "Hi There"
+      htmlAllContain "h1" "Welcome"
+      htmlAllContain "p"  "This is an example of Yesod in action" 
