@@ -1,2 +1,5 @@
 <div class="row-fluid">
-  <h1>Hi There
+  <div class="hero-unit span12">
+    <h1>Welcome
+    <p>This is an example of Yesod in action
+
