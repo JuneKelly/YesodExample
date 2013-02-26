@@ -108,3 +108,8 @@ test-suite test
                  , friendly-time
                  , old-locale
                  , gravatar
+                 , http-types
+                 , network
+                 , text
+                 , bytestring
+                 , wai-test

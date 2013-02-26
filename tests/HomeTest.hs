@@ -4,6 +4,7 @@ module HomeTest
     ) where
 
 import TestImport
+import TestTools
 
 homeSpecs :: Specs
 homeSpecs =
