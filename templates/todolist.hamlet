@@ -3,7 +3,7 @@
 
   <div class="tasklist span12">
     $forall Entity tId task <- tasks
-      ^{wTask tId task}
+      ^{_Task tId task}
         
   <br />
   <div class="new-task-form">

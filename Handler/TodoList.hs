@@ -126,4 +126,7 @@ postDeleteTaskR taskId = do
       redirect (HomeR)
       
 -- helpers
-wTask tId t = $(widgetFile "wTask")
+_Task :: TaskId
+         -> Task
+         -> Widget
+_Task tId t = $(widgetFile "_Task")
