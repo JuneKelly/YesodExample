@@ -7,7 +7,7 @@ module Handler.User
         postNewUserR
        )
 where
-  
+
 import Import
 import Yesod.Auth.HashDB (setPassword)
 import Yesod.Markdown
