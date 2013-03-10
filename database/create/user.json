@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "513c9f1eb6654f1941000000" }, "username" : "testuserone", "password" : "b124b3c17d64bf93cd4c31eb3a9638c1ad1af6c3", "salt" : ">X@6p`n8", "full_name" : "Testuser One", "admin" : false }
+{ "_id" : { "$oid" : "513c9f36b6654f1941000001" }, "username" : "testusertwo", "password" : "93129e2eb2f5277fc70c4125187fbb6c1bb5e481", "salt" : "30T4up51", "full_name" : "Testuser Two", "admin" : false }
