@@ -14,4 +14,4 @@ The purpose of this repo is to show an example of a scaffolded Yesod
 site with some functionality beyond that of the examples in 
 the (excellent) Yesod Book.
   
-For the CasperJS tests, first run `mongorestore --drop /database/test` to populate the database, or use the json files in database/create/ with mongoimport to populate the local YesodExample database.
+For the CasperJS tests, either run `mongorestore --drop /database/test` , or use the json files in database/create/ with mongoimport to populate the local YesodExample database.
