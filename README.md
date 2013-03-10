@@ -6,6 +6,7 @@ This is a (very) simple Yesod todo-list application.
 - MongoDB backend
 - HashDB Auth
 - Gravatars
+- integration testing with CasperJS
 - Bootstrap integration
 - Basic CRUD operations on User accounts, Todo lists and Tasks
 
