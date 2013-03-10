@@ -19,12 +19,12 @@ casper.start('http://localhost:3000/', function() {
             
             this.test.assertSelectorHasText('a', 'Logout');
             this.test.assertSelectorDoesntHaveText('a', 'Login');
-
+            this.test.assertSelectorHasText('a', 'My Profile');
         });
     });
 
 });
 
 casper.run(function() {
-    this.test.done(6);
+    this.test.done(7);
 });
