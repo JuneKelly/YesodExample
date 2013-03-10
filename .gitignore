@@ -12,4 +12,3 @@ cabal-dev/
 yesod-devel/
 devel-server
 static/tmp
-dump
