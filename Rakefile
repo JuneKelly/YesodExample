@@ -1,3 +1,5 @@
+require 'colorize'
+
 task :default => [:yesod]
 
 task :yesod do
@@ -5,6 +7,7 @@ task :yesod do
 end
 
 task :drop_and_recreate do
+  puts ">> Dropping YesodExample database and restoring test data <<".yellow
   sh %{ mongorestore --drop ./database/test }
 end
 
