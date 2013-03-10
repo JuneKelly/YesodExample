@@ -2,9 +2,6 @@
 
 casper.test.comment('Test the homepage');
 
-casper.test.assert(true, "true is so true");
-casper.test.assertNot(false, "false is wrong");
-
 casper.start('http://localhost:3000/', function() {
     this.test.assertExists('.navbar', 'navbar exists');
 
@@ -13,7 +10,7 @@ casper.start('http://localhost:3000/', function() {
 });
 
 casper.run(function() {
-    this.test.done(5); // I must be called once all the async stuff
+    this.test.done(3); // I must be called once all the async stuff
                        // has been executed. I'll also check that a
                        // single assertions has been performed.
 });

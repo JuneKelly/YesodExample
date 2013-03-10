@@ -1,6 +1,6 @@
-// Test logging in
+// Test the User Profile page
 
-casper.test.comment('Test logging in');
+casper.test.comment('Test User Profile page');
 
 casper.start('http://localhost:3000/', function() {
     this.clickLabel('Login', 'a');
@@ -14,17 +14,19 @@ casper.start('http://localhost:3000/', function() {
         }, true);
         this.then(function() {
 
-            this.test.assertExists('div .alert', 'alert exists');
-            this.test.assertSelectorHasText('div .alert', 'Logged in');
+            this.test.assertSelectorHasText('a', 'My Profile');
             
-            this.test.assertSelectorHasText('a', 'Logout');
-            this.test.assertSelectorDoesntHaveText('a', 'Login');
-            this.test.assertSelectorHasText('a', 'My Profile');  
+            this.clickLabel('My Profile', 'a');
+            this.then(function() {                
+                this.test.assertSelectorHasText('h1', 'Testuser One');
+                this.test.assertSelectorHasText('p', 'Username: testuserone');
+                this.test.assertSelectorHasText('a', 'Edit Profile');
+            });
         });
     });
 });
 
 casper.run(function() {
     this.clickLabel('Logout', 'a');
-    this.test.done(7);
+    this.test.done(6);
 });
