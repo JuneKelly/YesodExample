@@ -10,30 +10,7 @@ module Handler.TodoList (
 
 import Import
 
-isOwner :: UserId -> TodoList -> Bool
-isOwner uId todoList
-  | (todoListOwner todoList == uId) = True
-  | otherwise = False
-
-newListForm :: UserId -> Form TodoList
-newListForm uid = 
-  renderDivs $ TodoList
-  <$> areq textField "Title" Nothing
-  <*> pure uid
-  
-newTaskForm :: TodoListId -> Form Task
-newTaskForm lid =
-  renderDivs $ Task
-  <$> areq textField FieldSettings
-        { fsLabel = "Title"
-        , fsTooltip = Nothing
-        , fsId = Just "title-input"
-        , fsName = Nothing
-        , fsAttrs = [("class", "primary-input")]
-        } Nothing
-  <*> pure False
-  <*> pure lid
-
+-- index
 getIndexTodoListR :: Handler RepHtml
 getIndexTodoListR = do
   uid <- requireAuthId
@@ -42,6 +19,29 @@ getIndexTodoListR = do
   defaultLayout $ do
     $(widgetFile "todolists")
     
+-- show
+getTodoListR :: TodoListId -> Handler RepHtml
+getTodoListR listId = do
+  uid <- requireAuthId
+  todoList <- runDB $ get404 listId
+  tasks <- runDB $ selectList [TaskTodoList ==. listId] []
+  (taskForm, _) <- generateFormPost $ newTaskForm listId
+  let owner = (todoListOwner todoList) == uid
+  case owner of
+    True -> defaultLayout $ do
+      setTitle $ toHtml $ todoListTitle todoList
+      $(widgetFile "todolist")
+    False -> do
+      setMessage $ msgAlert "Access Denied"
+      redirect HomeR    
+
+-- new list    
+newListForm :: UserId -> Form TodoList
+newListForm uid = 
+  renderDivs $ TodoList
+  <$> areq textField "Title" Nothing
+  <*> pure uid
+  
 postNewTodoListR :: Handler RepHtml
 postNewTodoListR = do
   uid <- requireAuthId
@@ -54,6 +54,20 @@ postNewTodoListR = do
     _ -> do
       setMessage $ msgAlert "Something went wrong"
       redirect IndexTodoListR
+
+-- new task
+newTaskForm :: TodoListId -> Form Task
+newTaskForm lid =
+  renderDivs $ Task
+  <$> areq textField FieldSettings
+        { fsLabel = "Title"
+        , fsTooltip = Nothing
+        , fsId = Just "title-input"
+        , fsName = Nothing
+        , fsAttrs = [("class", "primary-input")]
+        } Nothing
+  <*> pure False
+  <*> pure lid
 
 postNewTaskR :: TodoListId -> Handler RepHtml
 postNewTaskR listId = do
@@ -73,21 +87,7 @@ postNewTaskR listId = do
       setMessage $ msgAlert "Something went wrong"
       redirect HomeR
 
-getTodoListR :: TodoListId -> Handler RepHtml
-getTodoListR listId = do
-  uid <- requireAuthId
-  todoList <- runDB $ get404 listId
-  tasks <- runDB $ selectList [TaskTodoList ==. listId] []
-  (taskForm, _) <- generateFormPost $ newTaskForm listId
-  let owner = (todoListOwner todoList) == uid
-  case owner of
-    True -> defaultLayout $ do
-      setTitle $ toHtml $ todoListTitle todoList
-      $(widgetFile "todolist")
-    False -> do
-      setMessage $ msgAlert "Access Denied"
-      redirect HomeR
-      
+-- delete list
 postDelTodoListR :: TodoListId -> Handler RepHtml
 postDelTodoListR listId = do
   uid <- requireAuthId
@@ -98,6 +98,7 @@ postDelTodoListR listId = do
   setMessage $ msgSuccess $ "Deleted " <> todoListTitle todoList
   redirect IndexTodoListR
 
+-- mark task as done
 postDoneTaskR :: TaskId -> Handler RepHtml
 postDoneTaskR taskId = do
   uid <- requireAuthId
@@ -130,3 +131,8 @@ _Task :: TaskId
          -> Task
          -> Widget
 _Task tId t = $(widgetFile "_Task")
+
+isOwner :: UserId -> TodoList -> Bool
+isOwner uId todoList
+  | (todoListOwner todoList == uId) = True
+  | otherwise = False
