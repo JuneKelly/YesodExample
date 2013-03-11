@@ -4,17 +4,17 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/                   HomeR              GET
+/                            HomeR              GET
 
-/user/new                  NewUserR           GET POST
-/user/#!UserId             ShowUserR              GET
-/profile/edit              EditUserR          GET POST
+/user/new                    NewUserR           GET POST
+/user/#!UserId               ShowUserR              GET
+/profile/edit                EditUserR          GET POST
 
-/lists                     IndexTodoListR     GET
-/list/new                  NewTodoListR       POST
-/list/#!TodoListId         TodoListR          GET
-/list/#!TodoListId/delete  DelTodoListR       POST
+/lists                       IndexTodoListR     GET
+/list/new                    NewTodoListR       POST
+/list/#!TodoListId           TodoListR          GET
+/list/#!TodoListId/delete    DelTodoListR       POST
 
-/list/#!TodoListId/newtask NewTaskR           POST
-/task/#TaskId/done         DoneTaskR          POST
-/task/#TaskId/delete       DeleteTaskR        POST
+/list/#!TodoListId/newtask   NewTaskR           POST
+/task/#TaskId/done           DoneTaskR          POST
+/task/#TaskId/delete         DeleteTaskR        POST
