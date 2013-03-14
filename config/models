@@ -2,10 +2,10 @@ User
     username Text
     password Text
     salt Text
-    fullName Text Asc
+    fullName Text
     description Markdown Maybe
     admin Bool default=false
-    email Text Maybe toFormField=maybeEmailField Update Eq
+    email Text Maybe
     UniqueUsername username
 
 TodoList
